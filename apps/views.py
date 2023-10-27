@@ -7,4 +7,4 @@ class Landing(View):
     context = ''
 
     def get(self, request):
-        return render(request, "welcome")
+        return render(request, 'index.html')
