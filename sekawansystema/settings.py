@@ -3,7 +3,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z5=sv8lpp)7-)ysc1-2!^_upigj^=^pj^+gio+7^3-iz+@d2_1'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['systema.id', '127.0.0.1']
 
@@ -90,8 +90,9 @@ USE_TZ = True
         - change static root path with absolute path on vps/dedicated server
 '''
 STATIC_URL = '/static/'
-#STATIC_ROOT = "/Backup Lenovo/UBAID/Yfinance/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = "/Backup Lenovo/UBAID/sekawansystema/staticfiles/"
+STATIC_ROOT = "/root/sekawansystema/staticfiles/"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # during development add this line
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
