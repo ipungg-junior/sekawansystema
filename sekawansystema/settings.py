@@ -3,14 +3,15 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z5=sv8lpp)7-)ysc1-2!^_upigj^=^pj^+gio+7^3-iz+@d2_1'
-DEBUG = True
+DEBUG = False
 
+AUTH_USER_MODEL = 'apps.Users'
 ALLOWED_HOSTS = ['systema.id', '127.0.0.1', 'demo.systema.id']
-
 
 INSTALLED_APPS = [
     'apps',
     'demo',
+    'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,6 +55,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 083837358230
+    # ipung4438
 }
 
 
@@ -76,11 +79,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Email Setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'cs@systema.id'
+EMAIL_HOST_PASSWORD = 'Ipung443833!'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
