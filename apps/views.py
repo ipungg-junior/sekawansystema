@@ -6,6 +6,9 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import JsonResponse
 from apps.services import SupportForms
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth import authenticate, login, logout
 
 
 def entry_not_found(request, exception, template_name='404.html'):
@@ -22,6 +25,44 @@ class Landing(View):
 
     def get(self, request):
         return render(request, 'index.html')
+    
+
+@method_decorator(login_required(login_url='login'), name='dispatch')
+class Supervisor(View):
+    
+    context = ''
+
+    def post(self, request):
+        pass
+
+    def get(self, request):
+        if (self.context == 'dashboard'):
+            return render(request, 'dashboard.html')
+
+
+class Account(View):
+
+    context = ''
+
+    def get(self, request):
+        if (self.context == 'logout'):
+            logout(request)
+            return redirect('/login/')
+        return render(request, 'sign-in.html')
+
+    def post(self, request):
+        if (self.context == 'login'):
+            user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
+            if(user is not None):
+                try:
+                    login(request, user)
+                    return JsonResponse({'status': 201, 'url_dest': '/spv/', 'info': 'Login berhasil'})
+                except:
+                    return JsonResponse({'status': 500, 'url_dest': '/login/', 'info': 'Internal Server Error'})
+            else:
+                return JsonResponse({'status': 400, 'url_dest': '/login/', 'info': 'Username atau Password salah'})
+
+
     
 class ToS(View):
     
