@@ -104,7 +104,7 @@ USE_TZ = True
 '''
 STATIC_URL = '/static/'
 #STATIC_ROOT = "/Backup Lenovo/UBAID/sekawansystema/staticfiles/"
-STATIC_ROOT = "/root/sekawansystema/staticfiles/"
+STATIC_ROOT = "/root/sekawansystema/staticfiles"
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # during development add this line
 STATICFILES_DIRS = [
