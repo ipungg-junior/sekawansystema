@@ -30,3 +30,11 @@ class Users(AbstractUser):
 
     def __str__(self):
         return self.phone_number
+    
+
+class SupportForm(models.Model):
+    name = models.CharField(max_length=22)
+    email = models.CharField(max_length=60)
+    topic = models.CharField(max_length=90)
+    phone = models.CharField(max_length=13)
+    message = models.TextField()

@@ -4,6 +4,9 @@ from django.conf import settings
 from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.http import JsonResponse
+from apps.services import SupportForms
+
 
 def entry_not_found(request, exception, template_name='404.html'):
     return render(request, template_name)
@@ -12,6 +15,10 @@ def entry_not_found(request, exception, template_name='404.html'):
 class Landing(View):
     
     context = ''
+
+    def post(self, request):
+        response = SupportForms.check(request)
+        return JsonResponse(response)
 
     def get(self, request):
         return render(request, 'index.html')
