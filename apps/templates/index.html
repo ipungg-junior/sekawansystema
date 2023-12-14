@@ -452,7 +452,7 @@
               <input type="number" id="phone" aria-label="phone" placeholder="No. Whatsapp" class="input-field">
             </div>
 
-            <textarea name="message" aria-label="message" placeholder="Deskripsikan singkat mengenai kebutuhan Anda." required
+            <textarea id="message" aria-label="message" placeholder="Deskripsikan singkat mengenai kebutuhan Anda." required
               class="input-field"></textarea>
 
             <div class="checkbox-wrapper">
@@ -462,12 +462,31 @@
               </label>
             </div>
 
-            <button type="submit" class="btn btn-primary text-center">Submit</button>
+            <button id="btn-submit" type="submit" class="btn btn-primary text-center">Submit</button>
           </form>
+
+          <script>
+            // var csrftoken = document.getElementById('name');
+            var inputName = document.getElementById('name');
+            var inputEmail = document.getElementById('email');
+            var inputTopic = document.getElementById('topic');
+            var inputPhone = document.getElementById('phone');
+            var inputMessage = document.getElementById('message');
+            var btnSubmit = document.getElementById('btn-submit');
+
+            btnSubmit.addEventListener('click', function (){
+              pushForm();
+            })
+
+            async function pushForm(){
+              // Push data form
+
+            }
+          </script>
 
           <ul class="contact-list">
 
-            <!-- <li class="contact-item">
+            <li class="contact-item">
               <div class="contact-card">
 
                 <div class="card-icon">
@@ -478,8 +497,7 @@
 
                   <h3 class="h3 card-title">Mail Here</h3>
 
-                  <a href="mailto:hello@luaz.com" class="card-link">hello@luaz.com</a>
-                  <a href="mailto:info@luaz.com" class="card-link">info@luaz.com</a>
+                  <a href="mailto:hello@luaz.com" class="card-link">cs@systema.id</a>
 
                 </div>
 
@@ -505,7 +523,7 @@
                 </div>
 
               </div>
-            </li> -->
+            </li>
 
             <li class="contact-item">
               <div class="contact-card">
@@ -518,7 +536,7 @@
 
                   <h3 class="h3 card-title">Call Here</h3>
 
-                  <a href="tel:+1234567890" class="card-link">+62 8383 7358 230</a>
+                  <a class="card-link">+62 8383 7358 230</a>
 
                 </div>
 
@@ -571,6 +589,7 @@
     - custom js link
   -->
   <script src="{% static 'systemajs/script.js' %}" defer></script>
+  <script src="{% static 'systemajs/landing.js' %}" defer></script>
 
   <!-- 
     - ionicon link

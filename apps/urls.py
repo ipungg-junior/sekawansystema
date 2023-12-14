@@ -14,4 +14,4 @@ urlpatterns = [
     #path('mail-html/', MailHtmlInvoice.as_view()),
     #path('inbox-mail/', InboxMail.as_view())
 ] 
-#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
