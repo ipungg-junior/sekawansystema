@@ -3,8 +3,8 @@
 *.sqlite3
 *.db
 *.pyc
-apps/__pycache__
-apps/migrations
-demo/migrations
-blog/migrations
+#apps/__pycache__
+#apps/migrations
+#demo/migrations
+#blog/migrations
 sekawansystema/settings.py
