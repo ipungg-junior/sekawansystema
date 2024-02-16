@@ -9,6 +9,8 @@ from apps.services import SupportForms
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login, logout
+from service import utils, _database
+
 
 
 def entry_not_found(request, exception, template_name='404.html'):
@@ -27,7 +29,7 @@ class Landing(View):
         return render(request, 'index.html')
     
 
-@method_decorator(login_required(login_url='login'), name='dispatch')
+# @method_decorator(login_required(login_url='login'), name='dispatch')
 class Supervisor(View):
     
     context = ''
@@ -37,7 +39,13 @@ class Supervisor(View):
 
     def get(self, request):
         if (self.context == 'dashboard'):
-            return render(request, 'dashboard.html')
+            usage = utils.analyze_system_storage()
+            return render(request, 'dashboard.html', context={'usage': usage})
+        if (self.context == 'dashboard-support'):
+            _t = _database.SupportTicket().get_all()
+            print(_t)
+            return render(request, 'dashboard-support.html')
+        
 
 
 class Account(View):

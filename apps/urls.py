@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', Account.as_view(context='login'), name='login'),
     path('logout/', Account.as_view(context='logout'), name='logout'),
     path('spv/', Supervisor.as_view(context='dashboard'), name='dashboard'),
+    path('spv/support/', Supervisor.as_view(context='dashboard-support'), name='dashboard-support'),
     #path('mail-to/<str:idEmail>/', Mail.as_view()),
     #path('mail-html/', MailHtmlInvoice.as_view()),
     #path('inbox-mail/', InboxMail.as_view())
