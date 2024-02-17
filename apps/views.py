@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from django.views import View
 from django.conf import settings
 from django.core.mail import send_mail, EmailMessage
@@ -38,12 +39,17 @@ class Supervisor(View):
         pass
 
     def get(self, request):
+        
         if (self.context == 'dashboard'):
             usage = utils.analyze_system_storage()
             return render(request, 'dashboard.html', context={'usage': usage})
+        
         if (self.context == 'dashboard-support'):
             _t = _database.SupportTicket().get_all()
-            return render(request, 'dashboard-support.html', context={'list_ticket': _t})
+            paginator = Paginator(_t, 20)
+            num = request.GET.get("page")
+            page_obj = paginator.get_page(num)
+            return render(request, 'dashboard-support.html', context={'list_ticket': page_obj})
         
 
 
