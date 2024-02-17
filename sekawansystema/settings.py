@@ -5,10 +5,10 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z5=sv8lpp)7-)ysc1-2!^_upigj^=^pj^+gio+7^3-iz+@d2_1'
-DEBUG = False
+DEBUG = True
 
 AUTH_USER_MODEL = 'apps.Users'
-ALLOWED_HOSTS = ['systema.id', '127.0.0.1', 'demo.systema.id']
+ALLOWED_HOSTS = ['systema.id', '127.0.0.1', 'demo.systema.id', '103.161.185.213']
 
 INSTALLED_APPS = [
     'apps',

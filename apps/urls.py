@@ -7,12 +7,13 @@ from django.conf.urls.static import static
 handler404 = 'apps.views.entry_not_found'
 
 urlpatterns = [
-    path('', Landing.as_view(context='')),
+    path('', Landing.as_view(context=''), name='landing'),
     path('tos/', ToS.as_view(context='')),
     path('maps/', Maps.as_view()),
     path('login/', Account.as_view(context='login'), name='login'),
     path('logout/', Account.as_view(context='logout'), name='logout'),
     path('spv/', Supervisor.as_view(context='dashboard'), name='dashboard'),
+    path('spv/support/', Supervisor.as_view(context='dashboard-support'), name='dashboard-support'),
     #path('mail-to/<str:idEmail>/', Mail.as_view()),
     #path('mail-html/', MailHtmlInvoice.as_view()),
     #path('inbox-mail/', InboxMail.as_view())

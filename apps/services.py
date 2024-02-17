@@ -1,4 +1,5 @@
 from django.core.validators import validate_email
+from apps.models import SupportForm
 
 class SupportForms:
 
@@ -27,6 +28,8 @@ class SupportForms:
         if (len(message) < 30):
             return {'status': 'error', 'message': 'Pesan minimal 30 karakter.'}
         
+        _t = SupportForm(name=name, email=email, topic=topic, phone=phone, message=message)
+        _t.save()
         return {'status': 'success', 'message': 'Terimakasih, kami segera membalas pesan Anda'}
         
 

@@ -17,7 +17,7 @@
                     SEKAWAN SYSTEMA GROUP
                 </div>
                 <h2 class="page-title">
-                  Insight
+                  Support Customer Management
                 </h2>
               </div>
             </div>
@@ -28,32 +28,35 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row row-deck row-cards">
-                <div class="col-lg-12">
-                    <div class="row row-cards">
-                      <div class="col-12">
-                        <div class="card">
-                          <div class="card-body">
-                            <p class="mb-3">Usage Total Storage<strong> {{ usage.decimal }} GB </strong>of {{ usage.total }} GB</p>
-                            <div class="progress progress-separated mb-3">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: {{ usage.percent }}%" aria-label="Regular"></div>
-                            </div>
-                            <div class="row">
-                              <div class="col-auto d-flex align-items-center pe-2">
-                                <span class="legend me-2 bg-primary"></span>
-                                <span>Regular</span>
-                                <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-secondary">{{ usage.decimal }} GB</span>
-                              </div>
-                              <div class="col-auto d-flex align-items-center ps-2">
-                                <span class="legend me-2"></span>
-                                <span>Space Available</span>
-                                <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-secondary">{{ usage.space }} GB</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in list_ticket %}
+                      <tr>
+                        <th scope="row">{{ ticket.name }}</th>
+                        <td>{{ ticket.topic }}</td>
+                        <td>{{ ticket.email }}</td>
+                      </tr>
+                       {% endfor %}
+                      <tr class="table-primary">
+                        <th scope="row">Primary</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                      </tr>
+                      <tr class="table-dark">
+                        <th scope="row">Dark</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
             </div>
           </div>
         </div>

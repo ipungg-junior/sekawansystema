@@ -9,6 +9,8 @@ from apps.services import SupportForms
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login, logout
+from service import utils, _database
+
 
 
 def entry_not_found(request, exception, template_name='404.html'):
@@ -37,7 +39,12 @@ class Supervisor(View):
 
     def get(self, request):
         if (self.context == 'dashboard'):
-            return render(request, 'dashboard.html')
+            usage = utils.analyze_system_storage()
+            return render(request, 'dashboard.html', context={'usage': usage})
+        if (self.context == 'dashboard-support'):
+            _t = _database.SupportTicket().get_all()
+            return render(request, 'dashboard-support.html', context={'list_ticket': _t})
+        
 
 
 class Account(View):
@@ -52,11 +59,11 @@ class Account(View):
 
     def post(self, request):
         if (self.context == 'login'):
-            user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
+            user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
             if(user is not None):
                 try:
                     login(request, user)
-                    return JsonResponse({'status': 201, 'url_dest': '/spv/', 'info': 'Login berhasil'})
+                    return redirect('dashboard')
                 except:
                     return JsonResponse({'status': 500, 'url_dest': '/login/', 'info': 'Internal Server Error'})
             else:
