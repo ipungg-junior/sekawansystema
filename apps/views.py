@@ -29,7 +29,7 @@ class Landing(View):
         return render(request, 'index.html')
     
 
-# @method_decorator(login_required(login_url='login'), name='dispatch')
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class Supervisor(View):
     
     context = ''
@@ -43,8 +43,7 @@ class Supervisor(View):
             return render(request, 'dashboard.html', context={'usage': usage})
         if (self.context == 'dashboard-support'):
             _t = _database.SupportTicket().get_all()
-            print(_t)
-            return render(request, 'dashboard-support.html')
+            return render(request, 'dashboard-support.html', context={'list_ticket': _t})
         
 
 
@@ -60,11 +59,11 @@ class Account(View):
 
     def post(self, request):
         if (self.context == 'login'):
-            user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
+            user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
             if(user is not None):
                 try:
                     login(request, user)
-                    return JsonResponse({'status': 201, 'url_dest': '/spv/', 'info': 'Login berhasil'})
+                    return redirect('dashboard')
                 except:
                     return JsonResponse({'status': 500, 'url_dest': '/login/', 'info': 'Internal Server Error'})
             else:
