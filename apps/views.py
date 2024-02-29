@@ -44,12 +44,14 @@ class Supervisor(View):
             usage = utils.analyze_system_storage()
             return render(request, 'dashboard.html', context={'usage': usage})
         
+        if (self.context == 'project-tehtarikjodi'):
+            usage = utils.analyze_system_storage()
+            return render(request, 'dashboard-project.html', context={'usage': usage})
+        
+        
         if (self.context == 'dashboard-support'):
             _t = _database.SupportTicket().get_all()
-            paginator = Paginator(_t, 20)
-            num = request.GET.get("page")
-            page_obj = paginator.get_page(num)
-            return render(request, 'dashboard-support.html', context={'list_ticket': page_obj})
+            return render(request, 'dashboard-support.html', context={'list_ticket': _t})
         
 
 

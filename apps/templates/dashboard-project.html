@@ -17,7 +17,7 @@
                     SEKAWAN SYSTEMA GROUP
                 </div>
                 <h2 class="page-title">
-                  Support Customer Management
+                  Project Plan
                 </h2>
               </div>
             </div>
@@ -28,39 +28,43 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row row-deck row-cards">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Email</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        {% for ticket in list_ticket %}
-                      <tr>
-                        <th scope="row">{{ ticket.name }}</th>
-                        <td>{{ ticket.topic }}</td>
-                        <td>{{ ticket.email }}</td>
-                      </tr>
-                       {% endfor %}
-                      <tr class="table-primary">
-                        <th scope="row">Primary</th>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                      </tr>
-                      <tr class="table-dark">
-                        <th scope="row">Dark</th>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="pagination">
-                    <span class="step-links">
-                      {% comment %}  {% endcomment %}
-                    </span>
-                </div>
+                <div class="datagrid">
+                    <div class="datagrid-item">
+                      <div class="datagrid-title">Registrar Domain</div>
+                      <div class="datagrid-content">Domainesia</div>
+                    </div>
+                    <div class="datagrid-item">
+                      <div class="datagrid-title">IP Address</div>
+                      <div class="datagrid-content">103.161.185.213</div>
+                    </div>
+                    <div class="datagrid-item">
+                      <div class="datagrid-title">Webserver Port</div>
+                      <div class="datagrid-content">8007</div>
+                    </div>
+                    <div class="datagrid-item">
+                      <div class="datagrid-title">Expiration Time</div>
+                      <div class="datagrid-content">April 2024–</div>
+                    </div>
+                    <div class="datagrid-item">
+                      <div class="datagrid-title">Service</div>
+                      <div class="datagrid-content">
+                        <span class="status status-green">
+                          Active
+                        </span>
+                      </div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">Power</div>
+                        <a class="btn btn-danger">Shutdown</a>
+                      </div>
+                  </div>
+                  <div class="datagrid-item">
+                    <div class="datagrid-title">Descriptions</div>
+                    <div class="datagrid-content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                  </div>
+                  
             </div>
           </div>
         </div>
@@ -71,8 +75,6 @@
               <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
                   <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank" class="link-secondary" rel="noopener">Laporkan</a></li>
-                  <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Kontak Developer</a></li>
-                  <li class="list-inline-item"><a href="./license.html" class="link-secondary">Terms & service</a></li>
                 </ul>
               </div>
               <div class="col-12 col-lg-auto mt-3 mt-lg-0">

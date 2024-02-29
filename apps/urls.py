@@ -13,9 +13,7 @@ urlpatterns = [
     path('login/', Account.as_view(context='login'), name='login'),
     path('logout/', Account.as_view(context='logout'), name='logout'),
     path('spv/', Supervisor.as_view(context='dashboard'), name='dashboard'),
+    path('spv/project/tehtarikjodi/', Supervisor.as_view(context='project-tehtarikjodi'), name='project-tehtarikjodi'),
+    path('spv/project/bsl/', Supervisor.as_view(context='project-bsl'), name='project-bsl'),
     path('spv/support/', Supervisor.as_view(context='dashboard-support'), name='dashboard-support'),
-    #path('mail-to/<str:idEmail>/', Mail.as_view()),
-    #path('mail-html/', MailHtmlInvoice.as_view()),
-    #path('inbox-mail/', InboxMail.as_view())
-] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
