@@ -16,4 +16,5 @@ urlpatterns = [
     path('spv/project/tehtarikjodi/', Supervisor.as_view(context='project-tehtarikjodi'), name='project-tehtarikjodi'),
     path('spv/project/bsl/', Supervisor.as_view(context='project-bsl'), name='project-bsl'),
     path('spv/support/', Supervisor.as_view(context='dashboard-support'), name='dashboard-support'),
+]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
