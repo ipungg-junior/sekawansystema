@@ -18,3 +18,7 @@ urlpatterns = [
     path('spv/support/', Supervisor.as_view(context='dashboard-support'), name='dashboard-support'),
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+websocket_urlpatterns = [
+    path('ws/somepath/', print),  # Gantilah dengan URL dan consumer Anda
+]

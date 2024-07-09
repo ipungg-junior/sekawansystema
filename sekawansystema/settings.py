@@ -5,12 +5,13 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z5=sv8lpp)7-)ysc1-2!^_upigj^=^pj^+gio+7^3-iz+@d2_1'
-DEBUG = False
-
+DEBUG = True
+CSRF_TRUSTED_ORIGINS = ['https://systema.id']
 AUTH_USER_MODEL = 'apps.Users'
 ALLOWED_HOSTS = ['systema.id', '127.0.0.1', 'demo.systema.id']
 
 INSTALLED_APPS = [
+    'channels',
     'apps',
     'demo',
     'blog',
@@ -51,15 +52,28 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sekawansystema.wsgi.application'
+ASGI_APPLICATION = 'sekawansystema.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'main_systema',
+        'USER': 'ipsystema',
+        'PASSWORD': 'ipung443833',
+        'HOST': 'localhost',  # atau sesuaikan dengan host PostgreSQL Anda
+        'PORT': '5432',       # atau port yang digunakan oleh PostgreSQL Anda
     }
-    # 083837358230
-    # ipung4438
 }
+
 
 
 # Password validation
