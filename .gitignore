@@ -13,4 +13,5 @@ blog/migrations
 sekawansystema/settings.py
 penv
 launch.sh
+push.sh
 staticfiles
