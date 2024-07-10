@@ -63,16 +63,16 @@ CHANNEL_LAYERS = {
     },
 }
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'main_systema',
-        'USER': 'ipsystema',
-        'PASSWORD': 'ipung443833',
-        'HOST': 'localhost',  # atau sesuaikan dengan host PostgreSQL Anda
-        'PORT': '5432',       # atau port yang digunakan oleh PostgreSQL Anda
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 083837358230
+    # ipung4438
 }
+
 
 
 
