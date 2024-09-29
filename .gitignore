@@ -1,5 +1,5 @@
 # Ignore SQLite database files
-# sekawansystema/settings.py
+sekawansystema/settings.py
 *.sqlite
 *.sqlite3
 *.db
