@@ -8,7 +8,7 @@ SECRET_KEY = 'z5=sv8lpp)7-)ysc1-2!^_upigj^=^pj^+gio+7^3-iz+@d2_1'
 DEBUG = True
 CSRF_TRUSTED_ORIGINS = ['https://systema.id']
 AUTH_USER_MODEL = 'apps.Users'
-ALLOWED_HOSTS = ['systema.id', '127.0.0.1', 'demo.systema.id']
+ALLOWED_HOSTS = ['systema.id', 'demo.systema.id']
 
 INSTALLED_APPS = [
     'channels',
@@ -69,8 +69,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    # 083837358230
-    # ipung4438
 }
 
 

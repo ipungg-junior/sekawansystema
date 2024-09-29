@@ -5,26 +5,55 @@ from django.conf import settings
 from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from apps.services import SupportForms
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login, logout
-from service import utils, _database
-
-
+from service import utils, _database, telebot
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def entry_not_found(request, exception, template_name='404.html'):
     return render(request, template_name)
 
+def rupiah_format(txt):
+    str_amount = str(txt)[::-1]
+    # Tambahkan tanda titik setiap tiga digit
+    formatted_str = '.'.join([str_amount[i:i+3] for i in range(0, len(str_amount), 3)])    
+    # Balikkan kembali string yang telah diformat dan tambahkan "Rp" di depannya
+    formatted_str = formatted_str[::-1]
+    return formatted_str
+
 # Create your views here.
+@method_decorator(csrf_exempt, name='dispatch')
 class Landing(View):
     
     context = ''
 
     def post(self, request):
-        response = SupportForms.check(request)
-        return JsonResponse(response)
+        if (self.context == ''):
+            response = SupportForms.check(request)
+            return JsonResponse(response)
+        if (self.context == 'midtrans-finish'):
+            # Mengonversi dari byte ke string
+            string_data = (request.body).decode('utf-8')
+            # Mengonversi dari string JSON ke dictionary
+            dict_data = json.loads(string_data)
+            status = dict_data['transaction_status']
+            if status == 'settlement':
+                order_id = dict_data['order_id']
+                amount = dict_data['gross_amount']
+                payment_type = dict_data['payment_type']
+                if (payment_type == 'bank_transfer'):
+                    bank = dict_data['va_numbers'][0]['bank']
+                    telebot.broadcast(f'[INCOME {str(bank).upper()}]\nRp.{rupiah_format(int(float(amount)))}\nID : {order_id}')
+                else:
+                    telebot.broadcast(f'[INCOME {payment_type}]\nRp.{rupiah_format(int(float(amount)))}\nID : {order_id}')
+            res = HttpResponse()
+            print(dict_data)
+            return res
 
     def get(self, request):
         return render(request, 'index.html')

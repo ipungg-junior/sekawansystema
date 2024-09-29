@@ -8,6 +8,7 @@ handler404 = 'apps.views.entry_not_found'
 
 urlpatterns = [
     path('', Landing.as_view(context=''), name='landing'),
+    path('midtrans-finish/', Landing.as_view(context='midtrans-finish'), name='midtrans-finish'),
     path('tos/', ToS.as_view(context=''), name='terms-of-service'),
     path('maps/', Maps.as_view()),
     path('login/', Account.as_view(context='login'), name='login'),
