@@ -1,8 +1,8 @@
 from django.urls import path
-from demo.views import Demo
+from viewer.demo.main import DemoDirect
 
 handler404 = 'apps.views.entry_not_found'
 
 urlpatterns = [
-    path('<str:client_name>/', Demo.as_view()),
+    path('<str:client_name>/', DemoDirect.as_view()),
 ]

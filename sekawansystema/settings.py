@@ -60,7 +60,7 @@ ROOT_URLCONF = root_env['web_settings']['root_urlconf']
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
