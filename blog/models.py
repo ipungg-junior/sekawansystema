@@ -6,7 +6,7 @@ from django.conf import settings
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=60, null=False, blank=False)
-    image = models.ImageField(upload_to='media/blog/image/', null=True, blank=True)
+    image_link = models.CharField(null=True, blank=True, max_length=450)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

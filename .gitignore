@@ -1,4 +1,5 @@
 # Ignore SQLite database files
+# sekawansystema/settings.py
 *.sqlite
 *.sqlite3
 *.db
@@ -7,11 +8,12 @@ apps/__pycache__
 demo/__pycache__
 blog/__pycache__
 sekawansystema/__pycache__
+example_code/*
 apps/migrations
 demo/migrations
 blog/migrations
-sekawansystema/settings.py
 penv
 launch.sh
 push.sh
 staticfiles
+configuration.json

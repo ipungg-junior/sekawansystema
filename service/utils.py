@@ -1,4 +1,9 @@
-import os, psutil
+
+from functools import wraps
+from django.http import HttpResponseForbidden
+from django.shortcuts import render, redirect
+from django.conf import settings
+import os, json, psutil
 
 def analyze_system_storage():
 
@@ -17,3 +22,15 @@ def analyze_system_storage():
     return stats
 
 
+def read_json(filename):
+    # Buat path lengkap ke file JSON
+    file_path = os.path.join(settings.BASE_DIR, f'{filename}')
+    
+    # Baca file JSON
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+            return data
+    else:
+        print("Error when try unpacking configuration file.")
+        return {}

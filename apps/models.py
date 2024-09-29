@@ -22,7 +22,7 @@ class UsersManager(BaseUserManager):
 # Create your models here.
 class Users(AbstractUser):
     phone_number = models.CharField(null=False, blank=False, unique=True, max_length=14)
-    profile_picture = models.ImageField(upload_to='profile_pic/', null=True, blank=True)
+    profile_picture_link = models.CharField(null=True, blank=True, max_length=450)
     username = models.CharField(max_length=30, unique=True, null=True, blank=True)
 
     USERNAME_FIELD = 'phone_number'
