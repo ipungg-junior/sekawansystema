@@ -38,3 +38,8 @@ class SupportForm(models.Model):
     topic = models.CharField(max_length=90)
     phone = models.CharField(max_length=13)
     message = models.TextField()
+    
+    
+class Project(models.Model):
+    project_name = models.CharField(max_length=22)
+    created_on = models.DateTimeField(auto_now_add=True)

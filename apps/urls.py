@@ -12,7 +12,7 @@ urlpatterns = [
     path('tos/', ToS.as_view(context=''), name='terms-of-service'),
     path('maps/', Maps.as_view()),
     path('login/', Account.as_view(context='login'), name='login'),
-    path('logout/', Account.as_view(context='logout'), name='logout'),
+    path('spv/logout/', Account.as_view(context='logout'), name='logout'),
     path('spv/', Supervisor.as_view(context='dashboard'), name='dashboard'),
     path('spv/project/tehtarikjodi/', Supervisor.as_view(context='project-tehtarikjodi'), name='project-tehtarikjodi'),
     path('spv/project/bsl/', Supervisor.as_view(context='project-bsl'), name='project-bsl'),

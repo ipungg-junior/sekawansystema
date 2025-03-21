@@ -91,7 +91,7 @@ class Account(View):
     def get(self, request):
         if (self.context == 'logout'):
             logout(request)
-            return redirect('/login/')
+            return redirect('https://login.e-tester.my.id/')
         return render(request, 'sign-in.html')
 
     def post(self, request):
@@ -100,7 +100,7 @@ class Account(View):
             if(user is not None):
                 try:
                     login(request, user)
-                    return redirect('dashboard')
+                    return redirect('https://dashboard.e-tester.my.id/')
                 except:
                     return JsonResponse({'status': 500, 'url_dest': '/login/', 'info': 'Internal Server Error'})
             else:

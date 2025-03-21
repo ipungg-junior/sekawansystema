@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-i28tof6w9e6a@+6zq-#-s83(k0$708-n-q*hp1tj49!+czspaq
 
 DEBUG = root_env['web_settings']['debug']
 
-CSRF_TRUSTED_ORIGINS = ['https://systema.id']
+CSRF_TRUSTED_ORIGINS = root_env['web_settings']['csrf_trusted_origins']
 
 INSTALLED_APPS = [
     'channels',
@@ -54,6 +54,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SESSION_COOKIE_DOMAIN = ".e-tester.my.id"  # Gunakan titik di awal agar berlaku ke semua subdomain
+SESSION_COOKIE_NAME = "sessionid"
+SESSION_COOKIE_SECURE = True  # Gunakan True jika memakai HTTPS
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = None  # Penting untuk lintas subdomain
+CSRF_COOKIE_DOMAIN = ".e-tester.my.id"
+CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = root_env['web_settings']['root_urlconf']
 
@@ -88,11 +96,14 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sekawansystema_master',
+        'USER': 'root',
+        'PASSWORD': 'P@ssw0rd*1',
+        'HOST': 'localhost',  # Ganti dengan IP server PostgreSQL jika remote
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
